@@ -4,6 +4,7 @@ import com.peregud.travelhistory.converter.builder.JourneyBuilder;
 import com.peregud.travelhistory.domain.Journey;
 import com.peregud.travelhistory.dto.JourneyDto;
 import com.peregud.travelhistory.service.JourneyService;
+import com.peregud.travelhistory.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class JourneyController {
 
     @Autowired
     private JourneyService journeyService;
+
+    @Autowired
+    private WeatherService weatherService;
 
     @GetMapping(PAGE_JOURNEYS_LIST)
     public String displayJourneys(Model model,
@@ -47,13 +51,11 @@ public class JourneyController {
     public ModelAndView insertJourney(@RequestParam(required = false, value = PARAM_ID) Long id,
                                       @RequestParam(PARAM_COUNTRY) String country,
                                       @RequestParam(PARAM_CITY) String city,
-                                      @RequestParam(value = PARAM_CURRENT_WEATHER, required = false)
-                                              String currentWeather,
                                       @RequestParam(value = PARAM_YEAR, required = false) Integer year,
                                       @RequestParam(PARAM_DESCRIPTION) String description,
                                       @RequestParam(PARAM_USER) String user,
                                       ModelMap model) {
-        Journey journey = JourneyBuilder.insertJourney(id, country, city, currentWeather, year, description, user);
+        Journey journey = JourneyBuilder.insertJourney(id, country, city, year, description, user);
         journeyService.save(journey);
         return new ModelAndView(REDIRECT_JOURNEYS_LIST, model);
     }
@@ -69,13 +71,11 @@ public class JourneyController {
     public ModelAndView updateJourney(@RequestParam(PARAM_ID) Long id,
                                       @RequestParam(PARAM_COUNTRY) String country,
                                       @RequestParam(PARAM_CITY) String city,
-                                      @RequestParam(value = PARAM_CURRENT_WEATHER, required = false)
-                                              String currentWeather,
                                       @RequestParam(value = PARAM_YEAR, required = false) Integer year,
                                       @RequestParam(PARAM_DESCRIPTION) String description,
                                       @RequestParam(PARAM_USER) String user,
                                       ModelMap model) {
-        Journey journey = JourneyBuilder.insertJourney(id, country, city, currentWeather, year, description, user);
+        Journey journey = JourneyBuilder.insertJourney(id, country, city, year, description, user);
         journeyService.update(journey, id);
         return new ModelAndView(REDIRECT_JOURNEYS_LIST, model);
     }
@@ -84,5 +84,13 @@ public class JourneyController {
     public ModelAndView deleteJourneys(@RequestParam(PARAM_DELETE_JOURNEY) String[] idList, ModelMap model) {
         journeyService.delete(idList);
         return new ModelAndView(REDIRECT_JOURNEYS_LIST, model);
+    }
+
+    @GetMapping(PAGE_JOURNEYS_WEATHER)
+    public String displayWeather(@RequestParam(PARAM_ID) Long id, Model model) {
+        Journey journey = journeyService.getById(id);
+        model.addAttribute(ATTR_CURRENT_WEATHER,
+                weatherService.getCurrentWeather(journeyService.getCity(journey.getId())));
+        return VIEW_CURRENT_WEATHER;
     }
 }

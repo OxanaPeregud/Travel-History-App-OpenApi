@@ -31,6 +31,11 @@ public class JourneyServiceImpl implements JourneyService {
     }
 
     @Override
+    public String getCity(Long id) {
+        return journeyRepository.getCity(id);
+    }
+
+    @Override
     public Journey getById(Long id) {
         return journeyRepository.getById(id);
     }

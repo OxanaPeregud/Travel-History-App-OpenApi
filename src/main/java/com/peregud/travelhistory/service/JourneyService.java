@@ -10,6 +10,8 @@ public interface JourneyService {
 
     Page<JourneyDto> getAll(String pageNo);
 
+    String getCity(Long id);
+
     Journey getById(Long id);
 
     void save(Journey journey);

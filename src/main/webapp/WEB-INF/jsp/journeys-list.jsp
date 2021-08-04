@@ -24,12 +24,13 @@
                 <th>ID</th>
                 <th>Country</th>
                 <th>City</th>
-                <th>Current Weather</th>
                 <th>Year</th>
                 <th>Description</th>
                 <th>User</th>
+                <th>Current Weather</th>
                 <th>Edit</th>
                 <th>Delete</th>
+
             </tr>
 
             <c:forEach var="journey" items="${listJourneys}">
@@ -37,10 +38,13 @@
                     <td><c:out value="${journey.id}"/></td>
                     <td><c:out value="${journey.country}"/></td>
                     <td><c:out value="${journey.city}"/></td>
-                    <td><c:out value="${journey.currentWeather}"/></td>
                     <td><c:out value="${journey.year}"/></td>
                     <td><c:out value="${journey.description}"/></td>
                     <td><c:out value="${journey.user}"/></td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/journeys/weather?id=<c:out value='${journey.id}'/>">
+                            Weather</a>
+                    </td>
                     <td>
                         <a href="${pageContext.request.contextPath}/journeys/edit?id=<c:out value='${journey.id}'/>">
                             Edit</a>

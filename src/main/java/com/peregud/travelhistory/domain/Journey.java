@@ -19,10 +19,8 @@ public class Journey implements Serializable {
 
     private String country;
     private String city;
-
-    @Column(name = "current_weather")
-    private String currentWeather;
     private Integer year;
     private String description;
     private String user;
+    private CurrentWeather currentWeather;
 }
