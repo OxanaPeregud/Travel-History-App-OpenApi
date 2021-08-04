@@ -17,6 +17,7 @@ public class JourneyConverter implements Converter<Journey, JourneyDto> {
                 .ifPresent(builder::id);
         return builder
                 .country(journey.getCountry())
+                .city(journey.getCity())
                 .currentWeather(journey.getCurrentWeather())
                 .year(journey.getYear())
                 .description(journey.getDescription())

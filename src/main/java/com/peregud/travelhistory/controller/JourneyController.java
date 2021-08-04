@@ -46,13 +46,14 @@ public class JourneyController {
     @PostMapping(PAGE_JOURNEY_INSERT)
     public ModelAndView insertJourney(@RequestParam(required = false, value = PARAM_ID) Long id,
                                       @RequestParam(PARAM_COUNTRY) String country,
+                                      @RequestParam(PARAM_CITY) String city,
                                       @RequestParam(value = PARAM_CURRENT_WEATHER, required = false)
                                               String currentWeather,
                                       @RequestParam(value = PARAM_YEAR, required = false) Integer year,
                                       @RequestParam(PARAM_DESCRIPTION) String description,
                                       @RequestParam(PARAM_USER) String user,
                                       ModelMap model) {
-        Journey journey = JourneyBuilder.insertJourney(id, country, currentWeather, year, description, user);
+        Journey journey = JourneyBuilder.insertJourney(id, country, city, currentWeather, year, description, user);
         journeyService.save(journey);
         return new ModelAndView(REDIRECT_JOURNEYS_LIST, model);
     }
@@ -67,13 +68,14 @@ public class JourneyController {
     @PostMapping(PAGE_JOURNEY_UPDATE)
     public ModelAndView updateJourney(@RequestParam(PARAM_ID) Long id,
                                       @RequestParam(PARAM_COUNTRY) String country,
+                                      @RequestParam(PARAM_CITY) String city,
                                       @RequestParam(value = PARAM_CURRENT_WEATHER, required = false)
                                               String currentWeather,
                                       @RequestParam(value = PARAM_YEAR, required = false) Integer year,
                                       @RequestParam(PARAM_DESCRIPTION) String description,
                                       @RequestParam(PARAM_USER) String user,
                                       ModelMap model) {
-        Journey journey = JourneyBuilder.insertJourney(id, country, currentWeather, year, description, user);
+        Journey journey = JourneyBuilder.insertJourney(id, country, city, currentWeather, year, description, user);
         journeyService.update(journey, id);
         return new ModelAndView(REDIRECT_JOURNEYS_LIST, model);
     }

@@ -3,6 +3,7 @@ package com.peregud.travelhistory;
 public class AppConstants {
     public static final String PARAM_ID = "id";
     public static final String PARAM_COUNTRY = "country";
+    public static final String PARAM_CITY = "city";
     public static final String PARAM_CURRENT_WEATHER = "currentWeather";
     public static final String PARAM_YEAR = "year";
     public static final String PARAM_DESCRIPTION = "description";

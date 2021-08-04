@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class JourneyDto {
     private Long id;
     private String country;
+    private String city;
     private String currentWeather;
     private Integer year;
     private String description;

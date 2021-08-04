@@ -45,6 +45,16 @@
             </div>
 
             <div class="row">
+                <label>City</label>
+                <label>
+                    <input type="text" name="city"
+                           value="<c:out value='${journey.city}' />"
+                    />
+                </label>
+                <div class="error" id="cityErr"></div>
+            </div>
+
+            <div class="row">
                 <label>Year</label>
                 <label>
                     <input type="text" name="year" maxlength="4"

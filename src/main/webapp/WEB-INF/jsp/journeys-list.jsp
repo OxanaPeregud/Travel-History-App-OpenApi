@@ -23,6 +23,7 @@
             <tr>
                 <th>ID</th>
                 <th>Country</th>
+                <th>City</th>
                 <th>Current Weather</th>
                 <th>Year</th>
                 <th>Description</th>
@@ -35,6 +36,7 @@
                 <tr>
                     <td><c:out value="${journey.id}"/></td>
                     <td><c:out value="${journey.country}"/></td>
+                    <td><c:out value="${journey.city}"/></td>
                     <td><c:out value="${journey.currentWeather}"/></td>
                     <td><c:out value="${journey.year}"/></td>
                     <td><c:out value="${journey.description}"/></td>

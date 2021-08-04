@@ -18,6 +18,7 @@ public class Journey implements Serializable {
     private Long id;
 
     private String country;
+    private String city;
 
     @Column(name = "current_weather")
     private String currentWeather;
