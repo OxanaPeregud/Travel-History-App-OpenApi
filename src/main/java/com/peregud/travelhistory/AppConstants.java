@@ -33,7 +33,7 @@ public class AppConstants {
     public static final Integer PAGE_SIZE = 4;
     public static final String PAGE_NUMBER_DEFAULT = "0";
 
-    public static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}";
+    public static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}&units=metric";
     public static final String WEATHER = "weather";
     public static final String WEATHER_MAIN = "main";
     public static final String WEATHER_TEMP = "temp";

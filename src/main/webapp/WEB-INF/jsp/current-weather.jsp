@@ -16,33 +16,35 @@
             <div id="bloc1">
 
                 <div class="row">
-                    <h4>Current Conditions</h4>
+                    <h4>Current Condition</h4>
                     <label>
                         <c:out value='${currentWeather.description}'/>
                     </label>
                 </div>
 
                 <div class="row">
-                    <h4>Temperature</h4>
+                    <h4>Wind Speed</h4>
                     <label>
-                        <c:out value='${currentWeather.temperature}'/>
+                        <c:out value='${currentWeather.windSpeed}'/> mph
                     </label>
                 </div>
+
         </td>
 
         <td>
             <div id="bloc2">
+
                 <div class="row">
-                    <h4>Feels Like</h4>
+                    <h4>Temperature</h4>
                     <label>
-                        <c:out value='${currentWeather.feelsLike}'/>
+                        <c:out value='${currentWeather.temperature}'/> &#8451
                     </label>
                 </div>
 
                 <div class="row">
-                    <h4>Wind Speed</h4>
+                    <h4>Feels Like</h4>
                     <label>
-                        <c:out value='${currentWeather.windSpeed}'/>
+                        <c:out value='${currentWeather.feelsLike}'/> &#8451
                     </label>
                 </div>
 
