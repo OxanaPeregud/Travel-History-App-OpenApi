@@ -24,6 +24,9 @@ public class WeatherServiceImpl implements WeatherService {
     @Value("${apiKey}")
     private String apiKey;
 
+    @Value("${weatherURL}")
+    private String weatherUrl;
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -32,7 +35,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public CurrentWeather getCurrentWeather(String city) {
-        URI url = new UriTemplate(WEATHER_URL).expand(city, apiKey);
+        URI url = new UriTemplate(weatherUrl).expand(city, apiKey);
         ResponseEntity<String> response;
         try {
             response = restTemplate.getForEntity(url, String.class);
