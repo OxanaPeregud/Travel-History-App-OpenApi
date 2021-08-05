@@ -1,28 +1,22 @@
 package com.peregud.travelhistory.controller;
 
-import com.peregud.travelhistory.repository.JourneyRepository;
+import com.peregud.travelhistory.MockInit;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.peregud.travelhistory.AppConstants.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(JourneyController.class)
-class JourneyControllerTest {
+class JourneyControllerTest extends MockInit {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @MockBean
-    private JourneyController journeyController;
-
-    @MockBean
-    private JourneyRepository journeyRepository;
 
     @Test
     void displayJourneys() throws Exception {
