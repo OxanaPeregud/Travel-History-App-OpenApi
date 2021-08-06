@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 
 import static com.peregud.travelhistoryrest.util.AppConstants.MAX_PAGE_SIZE;
 
-public class AppUtils {
+public class PageUtil {
 
     public static void validatePageNumberAndSize(int page, int size) {
         if (page < 0) {

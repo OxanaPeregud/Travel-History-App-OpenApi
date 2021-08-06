@@ -4,11 +4,14 @@ import com.peregud.travelhistoryrest.domain.CurrentWeather;
 import com.peregud.travelhistoryrest.domain.Journey;
 import com.peregud.travelhistoryrest.dto.JourneyDto;
 import com.peregud.travelhistoryrest.payload.ApiResponse;
-import com.peregud.travelhistoryrest.payload.PageResponse;
 import com.peregud.travelhistoryrest.service.JourneyService;
 import com.peregud.travelhistoryrest.service.WeatherService;
-import com.peregud.travelhistoryrest.util.AppUtils;
+import com.peregud.travelhistoryrest.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,11 +28,12 @@ public class JourneyRestController {
     private WeatherService weatherService;
 
     @GetMapping
-    public PageResponse<JourneyDto> getAllJourneys(
+    public ResponseEntity<Page<JourneyDto>> getAll(
             @RequestParam(name = PAGE, required = false, defaultValue = DEFAULT_PAGE_NUMBER) Integer page,
             @RequestParam(name = SIZE, required = false, defaultValue = DEFAULT_PAGE_SIZE) Integer size) {
-        AppUtils.validatePageNumberAndSize(page, size);
-        return journeyService.getAllJourneys(page, size);
+        PageUtil.validatePageNumberAndSize(page, size);
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, ID);
+        return journeyService.getAllJourneys(pageable);
     }
 
     @PostMapping
