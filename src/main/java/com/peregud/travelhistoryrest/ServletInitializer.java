@@ -1,4 +1,4 @@
-package com.peregud.travelhistory;
+package com.peregud.travelhistoryrest;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
