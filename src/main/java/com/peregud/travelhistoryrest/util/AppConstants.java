@@ -20,6 +20,11 @@ public class AppConstants {
     public static final String WEATHER_SPEED = "speed";
 
     public static final String ERROR_JSON = "Error parsing JSON";
+    public static final String ERROR_NEGATIVE_PAGE = "Page number cannot be less than zero";
+    public static final String ERROR_NEGATIVE_SIZE = "Size number cannot be less than zero";
+    public static final String ERROR_OVERSIZE = "Page size must not be greater than ";
+
     public static final String JOURNEY_STR = "Journey";
     public static final String ID = "id";
+    public static final String DELETE_SUCCESS = "You successfully deleted journey";
 }

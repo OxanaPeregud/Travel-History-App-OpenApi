@@ -14,8 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import static com.peregud.travelhistoryrest.util.AppConstants.ID;
-import static com.peregud.travelhistoryrest.util.AppConstants.JOURNEY_STR;
+import static com.peregud.travelhistoryrest.util.AppConstants.*;
 
 @Service
 public class JourneyServiceImpl implements JourneyService {
@@ -59,8 +58,7 @@ public class JourneyServiceImpl implements JourneyService {
     @Override
     public ResponseEntity<ApiResponse> deleteJourney(Long id) {
         journeyRepository.deleteById(id);
-        return new ResponseEntity<>(new ApiResponse(
-                Boolean.TRUE, "You successfully deleted journey"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(Boolean.TRUE, DELETE_SUCCESS), HttpStatus.OK);
     }
 
     @Override
